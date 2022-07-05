@@ -19,9 +19,9 @@ import androidx.compose.ui.unit.dp
 import com.breaktime.weather.presentation.ui.theme.DarkBlue
 import com.breaktime.weather.presentation.ui.theme.DeepBlue
 import com.breaktime.weather.presentation.ui.theme.WeatherTheme
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.AndroidEntryPoint
 
-@HiltAndroidApp
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel: WeatherViewModel by viewModels()
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
@@ -47,12 +47,14 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(DarkBlue)
                     ) {
+                        Spacer(modifier = Modifier.weight(1f))
                         WeatherCard(
                             state = viewModel.state,
                             backgroundColor = DeepBlue
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.weight(2f))
                         WeatherForecast(state = viewModel.state)
+                        Spacer(modifier = Modifier.weight(2f))
                     }
                     if (viewModel.state.isLoading) {
                         CircularProgressIndicator(

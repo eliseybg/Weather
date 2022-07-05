@@ -33,7 +33,7 @@ fun WeatherForecast(
                         weatherData = weatherData,
                         modifier = Modifier
                             .height(100.dp)
-                            .padding()
+                            .padding(horizontal = 16.dp)
                     )
                 }
             }
